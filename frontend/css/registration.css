@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F8FCFF;
+    color: #003759;
+    padding: 30px;
+}
+
+
+/* Page Heading */
+h1 {
+    text-align: center;
+    color: #003759;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+
+/* Back to Dashboard Button */
+#homeButton {
+    display: block;
+    margin: 0 auto 25px auto;
+    background-color: #1FA4EA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#homeButton:hover {
+    background-color: #1689c7;
+}
+
+
+/* Registration Form */
+form {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Labels */
+form > label {
+    display: block;
+    color: #003759;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+
+/* Text, Email and Date Inputs */
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+    width: 100%;
+    padding: 11px;
+    margin-bottom: 15px;
+    border: 1px solid #b8c7d1;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: white;
+}
+
+
+/* Input Focus */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+    outline: none;
+    border-color: #2196f3;
+}
+
+
+/* Gender */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="radio"] + label {
+    display: inline;
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+
+/* Save / Update Button */
+form button[type="submit"] {
+    display: block;
+    margin: 10px auto 0 auto;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: #125ea7;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"] {
+        font-size: 16px;
+    }
+
+}
+
+select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px;
+    margin-bottom: 15px;
+    border: 1px solid #b8c7d1;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: white;
+}
+
+select:focus {
+    outline: none;
+    border-color: #2196f3;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View Students</title>
+
+    <link rel="stylesheet" href="css/students.css">
+</head>
+
+<body>
+
+    <h1>Student List</h1>
+
+    <!-- Back to Dashboard -->
+    <button id="homeButton" type="button">
+        Back to Dashboard
+    </button>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Full Name</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTableBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="js/students.js"></script>
+
+</body>
+
+</html>

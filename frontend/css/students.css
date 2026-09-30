@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F8FCFF;
+    color: #003759;
+    padding: 30px;
+}
+
+
+/* Page Heading */
+h1 {
+    text-align: center;
+    color: #003759;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+
+/* Back to Dashboard Button */
+#homeButton {
+    background-color: #1FA4EA;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#homeButton:hover {
+    background-color: #1689c7;
+}
+
+
+/* Table Container */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Table */
+table {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+
+/* Table Cells */
+th,
+td {
+    border: 1px solid #cfd8dc;
+    padding: 12px 15px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+
+/* Table Header */
+th {
+    background-color: #C8E6FF;
+    color: #003759;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+/* Table Body */
+td {
+    color: #333;
+    font-size: 14px;
+}
+
+
+/* Alternate Row */
+tr:nth-child(even) {
+    background-color: #f7fbff;
+}
+
+
+/* Row Hover */
+tr:hover {
+    background-color: #eef7ff;
+}
+
+
+/* Action Column */
+td:last-child {
+    text-align: center;
+}
+
+
+/* All Action Buttons */
+td:last-child button {
+    color: white;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 2px;
+}
+
+
+/* Edit Button */
+td:last-child button:first-child {
+    background-color: #1FA4EA;
+}
+
+td:last-child button:first-child:hover {
+    background-color: #1689c7;
+}
+
+
+/* Delete Button */
+td:last-child button:last-child {
+    background-color: #e53935;
+}
+
+td:last-child button:last-child:hover {
+    background-color: #c62828;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    #homeButton {
+        font-size: 14px;
+        padding: 9px 16px;
+    }
+
+    .table-container {
+        padding: 5px;
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+    }
+}
