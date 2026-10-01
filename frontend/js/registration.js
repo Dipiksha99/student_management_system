@@ -1,79 +1,206 @@
 const form = document.getElementById("registrationForm");
 
-form.addEventListener("submit", (event) => {
-
-  event.preventDefault();
-
-  const studentId = document.getElementById("id").value;
-  const fullname = document.getElementById("name").value;
-  const course = document.getElementById("course").value;
-  const email = document.getElementById("email").value;
-  const phonenumber = document.getElementById("phone").value;
-  const gender = document.querySelector(
-    'input[name="gender"]:checked'
-  ).value;
-  const dob = document.getElementById("dob").value;
-  const address = document.getElementById("address").value;
-
-  // Get student status
-  const status = document.getElementById("status").value;
+const saveButton = form.querySelector(".save-btn");
 
 
-  const studentData = {
-    studentId: studentId,
-    fullname: fullname,
-    course: course,
-    email: email,
-    phonenumber: phonenumber,
-    gender: gender,
-    dob: dob,
-    address: address,
-    status: status
-  };
+// ================= SAVE STUDENT =================
+
+form.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
 
 
-  fetch("http://localhost:5000/api/students", {
-    method: "POST",
+    const studentId =
+        document.getElementById("id").value.trim();
 
-    headers: {
-      "Content-Type": "application/json"
-    },
+    const fullname =
+        document.getElementById("name").value.trim();
 
-    body: JSON.stringify(studentData)
-  })
-    .then(response => {
+    const course =
+        document.getElementById("course").value.trim();
 
-      if (!response.ok) {
-        throw new Error(
-          "Server returned an error: " + response.status
+    const email =
+        document.getElementById("email").value.trim();
+
+    const phonenumber =
+        document.getElementById("phone").value.trim();
+
+    const gender =
+        document.querySelector(
+            'input[name="gender"]:checked'
+        )?.value || "";
+
+    const dob =
+        document.getElementById("dob").value;
+
+    const address =
+        document.getElementById("address").value.trim();
+
+    const status =
+        document.getElementById("status").value;
+
+
+    // ================= PHONE VALIDATION =================
+
+    if (!/^[0-9]{10}$/.test(phonenumber)) {
+
+        alert(
+            "Please enter a valid 10-digit phone number."
         );
-      }
 
-      return response.text();
-    })
-    .then(data => {
+        return;
 
-      console.log(data);
+    }
 
-      alert(data);
 
-      form.reset();
+    // ================= STUDENT DATA =================
 
-    })
-    .catch(error => {
+    const studentData = {
 
-      console.error("Error:", error);
+        studentId: studentId,
 
-      alert("Student save nahi hua. Console check karo.");
+        fullname: fullname,
 
-    });
+        course: course,
+
+        email: email,
+
+        phonenumber: phonenumber,
+
+        gender: gender,
+
+        dob: dob,
+
+        address: address,
+
+        status: status
+
+    };
+
+
+    try {
+
+        // Disable button while saving
+        saveButton.disabled = true;
+
+        saveButton.textContent = "Saving...";
+
+
+        // ================= CHECK DUPLICATE STUDENT ID =================
+
+        const checkResponse = await fetch(
+            "http://localhost:5000/api/students"
+        );
+
+
+        if (!checkResponse.ok) {
+
+            throw new Error(
+                "Could not check existing students"
+            );
+
+        }
+
+
+        const students =
+            await checkResponse.json();
+
+
+        const duplicateStudent =
+            students.some((student) => {
+
+                return (
+                    String(student.studentId || "")
+                        .trim()
+                        .toLowerCase() ===
+                    studentId.toLowerCase()
+                );
+
+            });
+
+
+        // ================= DUPLICATE ID =================
+
+        if (duplicateStudent) {
+
+            alert(
+                "Student ID already exists.\n" +
+                "Please enter a different ID."
+            );
+
+            // Enable button again
+            saveButton.disabled = false;
+
+            saveButton.textContent = "Save Student";
+
+            return;
+
+        }
+
+
+        // ================= SAVE NEW STUDENT =================
+
+        const response = await fetch(
+            "http://localhost:5000/api/students",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(studentData)
+            }
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server returned an error: " +
+                response.status
+            );
+
+        }
+
+
+        // ================= SUCCESS =================
+
+        alert("Student added successfully!");
+
+
+        // Go to Students page
+        window.location.href = "students.html";
+
+
+    } catch (error) {
+
+        console.log("Error:", error);
+
+
+        saveButton.disabled = false;
+
+        saveButton.textContent = "Save Student";
+
+
+        alert(
+            "Student save nahi hua. " +
+            "Backend server check karo."
+        );
+
+    }
 
 });
 
 
-// Back to Dashboard
-const homeButton = document.getElementById("homeButton");
+// ================= CANCEL BUTTON =================
+
+const homeButton =
+    document.getElementById("homeButton");
+
 
 homeButton.addEventListener("click", () => {
-  window.location.href = "index.html";
+
+    window.location.href = "index.html";
+
 });

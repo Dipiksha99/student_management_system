@@ -62,15 +62,28 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const updatedStudent = await Student.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    res.send("Student updated successfully");
-  } catch (error) {
-    console.log("Error:", error);
-  }
+    try {
+        const id = req.params.id;
+
+        const updatedStudent = await Student.findByIdAndUpdate(
+            id,
+            req.body,
+            {
+                returnDocument: "after",
+                runValidators: true
+            }
+        );
+
+        if (!updatedStudent) {
+            return res.status(404).send("Student not found");
+        }
+
+        res.json(updatedStudent);
+
+    } catch (error) {
+        console.log("Error:", error);
+        res.status(500).send("Server error");
+    }
 });
 
 module.exports = router;

@@ -3,46 +3,204 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>View Students</title>
+    <title>Students | Student Management System</title>
 
     <link rel="stylesheet" href="css/students.css">
 </head>
 
 <body>
 
-    <h1>Student List</h1>
+    <!-- Navbar -->
+    <nav class="navbar">
 
-    <!-- Back to Dashboard -->
-    <button id="homeButton" type="button">
-        Back to Dashboard
-    </button>
+        <div class="logo">
+            <div class="logo-box">SMS</div>
 
-    <div class="table-container">
+            <div>
+                <h2>Student Management</h2>
+                <span>System</span>
+            </div>
+        </div>
 
-        <table>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="students.html" class="active">Students</a>
+            <a href="registration.html">Add Student</a>
+            <a href="index.html#about">About</a>
+        </div>
 
-            <thead>
-                <tr>
-                    <th>Student ID</th>
-                    <th>Full Name</th>
-                    <th>Course</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>DOB</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+    </nav>
 
-            <tbody id="studentTableBody">
-            </tbody>
 
-        </table>
+    <!-- Main -->
+    <main class="students-page">
 
-    </div>
+        <!-- Page Header -->
+        <section class="page-header">
+
+            <div>
+                <p class="section-label">STUDENT RECORDS</p>
+
+                <h1>All Students</h1>
+
+                <p>
+                    Search, view, edit and manage student records.
+                </p>
+            </div>
+
+            <a href="registration.html" class="add-btn">
+                + Add Student
+            </a>
+
+        </section>
+
+
+        <!-- Search and Filters -->
+        <section class="filter-box">
+
+            <div class="search-group">
+
+                <label for="searchInput">Search Student</label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by name, ID or email..."
+                >
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="statusFilter">Status</label>
+
+                <select id="statusFilter">
+
+                    <option value="All">All Status</option>
+
+                    <option value="Active">Active</option>
+
+                    <option value="Inactive">Inactive</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="courseFilter">Course</label>
+
+                <select id="courseFilter">
+
+                    <option value="All">All Courses</option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                id="clearFilters"
+                type="button"
+                class="clear-btn"
+            >
+                Clear
+            </button>
+
+        </section>
+
+
+        <!-- Student Count -->
+        <div class="record-info">
+
+            <p>
+                Showing
+                <strong id="studentCount">0</strong>
+                students
+            </p>
+
+        </div>
+
+
+        <!-- Table -->
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Full Name</th>
+                        <th>Course</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Status</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="studentTableBody">
+
+                </tbody>
+
+            </table>
+
+
+            <!-- No Result -->
+            <div id="noStudents" class="no-students">
+
+                <div class="empty-icon">🔍</div>
+
+                <h3>No students found</h3>
+
+                <p>
+                    Try changing your search or filter.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div>
+            <h3>Student Management System</h3>
+
+            <p>
+                Manage student information easily and efficiently.
+            </p>
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="students.html">Students</a>
+
+            <a href="registration.html">Add Student</a>
+
+            <a href="index.html#about">About</a>
+
+        </div>
+
+    </footer>
+
 
     <script src="js/students.js"></script>
 

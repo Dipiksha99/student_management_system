@@ -12,62 +12,298 @@
 
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <h1>Student Management System</h1>
-        <p>Manage student records easily and efficiently</p>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <div class="logo-box">SMS</div>
+
+            <div>
+                <h2>Student Management</h2>
+                <span>System</span>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="students.html">Students</a>
+            <a href="registration.html">Add Student</a>
+            <a href="#about">About</a>
+        </div>
+
+    </nav>
 
 
-    <!-- Main Dashboard -->
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">STUDENT MANAGEMENT SYSTEM</p>
+
+            <h1>
+                Manage Students.
+                <span>Manage Success.</span>
+            </h1>
+
+            <p class="hero-text">
+                A simple and efficient platform to manage student
+                records, courses, personal information and academic data.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="registration.html" id="add" class="btn primary-btn">
+                    + Add Student
+                </a>
+
+                <a href="students.html" id="view" class="btn secondary-btn">
+                    View Students
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-box">
+
+            <div class="hero-icon">
+                🎓
+            </div>
+
+            <h3>Student Records</h3>
+
+            <p>
+                Keep all student information organized
+                and easily accessible.
+            </p>
+
+            <div class="hero-line"></div>
+
+            <div class="mini-info">
+                <span>Secure Records</span>
+                <span>Easy Management</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Dashboard -->
     <main class="dashboard">
 
-        <h2 id="dash">Dashboard</h2>
+        <div class="section-heading">
+
+            <p class="section-label">OVERVIEW</p>
+
+            <h2>Dashboard</h2>
+
+            <p>
+                Get a quick overview of your student records.
+            </p>
+
+        </div>
 
 
-        <!-- Dashboard Cards -->
+        <!-- Statistics Cards -->
         <section class="cards">
 
-            <!-- Total Students -->
             <div class="card">
-                <h3>Total Students</h3>
-                <p id="sc">0</p>
+
+                <div class="card-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+                    <h3>Total Students</h3>
+                    <p id="sc">0</p>
+                </div>
+
             </div>
 
 
-            <!-- Total Courses -->
             <div class="card">
-                <h3>Total Courses</h3>
-                <p id="cc">00</p>
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+                <div>
+                    <h3>Total Courses</h3>
+                    <p id="cc">00</p>
+                </div>
+
             </div>
 
 
-            <!-- Active Students -->
             <div class="card">
-                <h3>Active Students</h3>
-                <p id="ac">0</p>
+
+                <div class="card-icon">
+                    ✅
+                </div>
+
+                <div>
+                    <h3>Active Students</h3>
+                    <p id="ac">0</p>
+                </div>
+
             </div>
 
         </section>
 
 
-        <!-- Dashboard Buttons -->
-        <section class="buttons">
+        <!-- Quick Actions -->
+        <section class="quick-section">
 
-            <button id="add" type="button">
-                Add Student
-            </button>
+            <div class="section-heading left">
 
-            <button id="view" type="button">
-                View Students
-            </button>
+                <p class="section-label">QUICK ACTIONS</p>
+
+                <h2>What would you like to do?</h2>
+
+            </div>
+
+
+            <div class="quick-grid">
+
+                <a href="registration.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        ➕
+                    </div>
+
+                    <div>
+                        <h3>Add New Student</h3>
+
+                        <p>
+                            Register a new student and save
+                            their information.
+                        </p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+
+                <a href="students.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        👥
+                    </div>
+
+                    <div>
+                        <h3>View All Students</h3>
+
+                        <p>
+                            Search, edit and delete existing
+                            student records.
+                        </p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- About -->
+        <section id="about" class="about-section">
+
+            <div class="about-content">
+
+                <p class="section-label">ABOUT SYSTEM</p>
+
+                <h2>About Student Management System</h2>
+
+                <p>
+                    Student Management System is a web-based application
+                    designed to manage student information in an organized
+                    and efficient way.
+                </p>
+
+                <p>
+                    The system allows administrators to add new students,
+                    view student records, update information and delete
+                    records when required.
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+                    <span>✓</span>
+                    <div>
+                        <h3>Easy Management</h3>
+                        <p>Simple interface for managing records.</p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <span>✓</span>
+                    <div>
+                        <h3>Organized Records</h3>
+                        <p>Student data stays structured and accessible.</p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <span>✓</span>
+                    <div>
+                        <h3>Fast Search</h3>
+                        <p>Find student records quickly.</p>
+                    </div>
+                </div>
+
+
+                <div class="feature">
+                    <span>✓</span>
+                    <div>
+                        <h3>Responsive Design</h3>
+                        <p>Works on desktop and mobile screens.</p>
+                    </div>
+                </div>
+
+            </div>
 
         </section>
 
     </main>
 
 
-    <!-- JavaScript -->
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div>
+            <h3>Student Management System</h3>
+            <p>
+                Manage student information easily and efficiently.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="students.html">Students</a>
+            <a href="registration.html">Add Student</a>
+            <a href="#about">About</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 Student Management System
+        </p>
+
+    </footer>
+
+
     <script src="js/script.js"></script>
 
 </body>

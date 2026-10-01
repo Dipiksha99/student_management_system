@@ -1,54 +1,335 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registration Form</title>
-    <link rel="StyleSheet" href="css/registration.css" />
-  </head>
-  <body>
-    <h1>Student Registration Form</h1>
-    <button id="homeButton" type="button">Back to Dashboard</button>
-    <form id="registrationForm">
-      <label for="id">Student ID:</label>
-      <input type="text" id="id" name="id" required /><br /><br />
 
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required /><br /><br />
+<head>
+    <meta charset="UTF-8">
 
-      <label for="course">Course:</label>
-      <input type="text" id="course" name="course" required /><br /><br />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required /><br /><br />
+    <title>Add Student | Student Management System</title>
 
-      <label for="phone">Phone Number:</label>
-      <input type="text" id="phone" name="phone" required /><br /><br />
+    <link rel="stylesheet" href="css/registration.css">
+</head>
 
-      <label for="gender">Gender:</label>
-      <input type="radio" id="male" name="gender" value="Male" required />
-      <label for="male">Male</label>
-      <input type="radio" id="female" name="gender" value="Female" required />
-      <label for="female">Female</label><br /><br />
+<body>
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required /><br /><br />
+    <!-- Navbar -->
+    <nav class="navbar">
 
-      <label for="address">Address:</label>
-      <input type="text" id="address" name="address" required /><br /><br />
+        <div class="logo">
+            <div class="logo-box">SMS</div>
 
-      <label for="status">Status:</label>
+            <div>
+                <h2>Student Management</h2>
+                <span>System</span>
+            </div>
+        </div>
 
-      <select id="status" name="status" required>
-        <option value="Active">Active</option>
-        <option value="Inactive">Inactive</option>
-      </select>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="students.html">Students</a>
+            <a href="registration.html" class="active">Add Student</a>
+            <a href="index.html#about">About</a>
+        </div>
 
-      <br /><br />
+    </nav>
 
-      <button type="submit">Save Student</button>
-    </form>
+
+    <!-- Main Content -->
+    <main class="registration-page">
+
+        <!-- Page Header -->
+        <section class="page-header">
+
+            <p class="section-label">STUDENT MANAGEMENT</p>
+
+            <h1>Add New Student</h1>
+
+            <p>
+                Enter student information carefully and save the record.
+            </p>
+
+        </section>
+
+
+        <!-- Registration Card -->
+        <section class="form-card">
+
+            <div class="form-title">
+
+                <div class="form-icon">
+                    🎓
+                </div>
+
+                <div>
+                    <h2>Student Information</h2>
+
+                    <p>
+                        All fields are required unless mentioned otherwise.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form id="registrationForm">
+
+                <div class="form-grid">
+
+                    <!-- Student ID -->
+                    <div class="form-group">
+
+                        <label for="id">
+                            Student ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="id"
+                            name="id"
+                            placeholder="Enter student ID"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Course -->
+                    <div class="form-group">
+
+                        <label for="course">
+                            Course
+                        </label>
+
+                        <input
+                            type="text"
+                            id="course"
+                            name="course"
+                            placeholder="e.g. B.Tech CSE"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="student@example.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Phone -->
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Gender -->
+                    <div class="form-group">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <div class="radio-group">
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    id="male"
+                                    name="gender"
+                                    value="Male"
+                                    required
+                                >
+
+                                <span>Male</span>
+
+                            </label>
+
+
+                            <label class="radio-option">
+
+                                <input
+                                    type="radio"
+                                    id="female"
+                                    name="gender"
+                                    value="Female"
+                                    required
+                                >
+
+                                <span>Female</span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DOB -->
+                    <div class="form-group">
+
+                        <label for="dob">
+                            Date of Birth
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dob"
+                            name="dob"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Status -->
+                    <div class="form-group">
+
+                        <label for="status">
+                            Student Status
+                        </label>
+
+                        <select
+                            id="status"
+                            name="status"
+                            required
+                        >
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Address -->
+                    <div class="form-group full-width">
+
+                        <label for="address">
+                            Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            rows="4"
+                            placeholder="Enter complete address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Form Buttons -->
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="homeButton"
+                        class="cancel-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Student
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div>
+            <h3>Student Management System</h3>
+
+            <p>
+                Manage student information easily and efficiently.
+            </p>
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="students.html">Students</a>
+
+            <a href="registration.html">Add Student</a>
+
+            <a href="index.html#about">About</a>
+
+        </div>
+
+    </footer>
+
 
     <script src="js/registration.js"></script>
-  </body>
+
+</body>
+
 </html>
