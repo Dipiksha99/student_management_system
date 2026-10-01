@@ -12,440 +12,279 @@ const studentCount = document.getElementById("studentCount");
 
 const noStudents = document.getElementById("noStudents");
 
-
 let allStudents = [];
-
 
 // ================= FETCH STUDENTS =================
 
 async function loadStudents() {
+  try {
+    const response = await fetch(
+      "https://student-management-system-u571.onrender.com/api/students",
+    );
 
-    try {
-
-        const response = await fetch(
-            "https://student-management-system-u571.onrender.com/api/students"
-        );
-
-        if (!response.ok) {
-
-            throw new Error("Failed to fetch students");
-
-        }
-
-        allStudents = await response.json();
-
-        createCourseOptions();
-
-        displayStudents(allStudents);
-
-    } catch (error) {
-
-        console.log("Error:", error);
-
+    if (!response.ok) {
+      throw new Error("Failed to fetch students");
     }
 
-}
+    allStudents = await response.json();
 
+    createCourseOptions();
+
+    displayStudents(allStudents);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
 
 // ================= COURSE OPTIONS =================
 
 function createCourseOptions() {
+  const courses = new Set();
 
-    const courses = new Set();
+  allStudents.forEach((student) => {
+    if (student.course) {
+      courses.add(student.course.trim());
+    }
+  });
 
-    allStudents.forEach((student) => {
+  courseFilter.innerHTML = `<option value="All">All Courses</option>`;
 
-        if (student.course) {
+  courses.forEach((course) => {
+    const option = document.createElement("option");
 
-            courses.add(student.course.trim());
+    option.value = course;
 
-        }
+    option.textContent = course;
 
-    });
-
-
-    courseFilter.innerHTML =
-        `<option value="All">All Courses</option>`;
-
-
-    courses.forEach((course) => {
-
-        const option = document.createElement("option");
-
-        option.value = course;
-
-        option.textContent = course;
-
-        courseFilter.appendChild(option);
-
-    });
-
+    courseFilter.appendChild(option);
+  });
 }
-
 
 // ================= DISPLAY STUDENTS =================
 
 function displayStudents(students) {
+  tableBody.innerHTML = "";
 
-    tableBody.innerHTML = "";
+  studentCount.textContent = students.length;
 
+  if (students.length === 0) {
+    noStudents.style.display = "block";
 
-    studentCount.textContent = students.length;
+    return;
+  }
 
+  noStudents.style.display = "none";
 
-    if (students.length === 0) {
+  students.forEach((student) => {
+    const row = document.createElement("tr");
 
-        noStudents.style.display = "block";
+    // Student ID
+    const idCell = document.createElement("td");
 
-        return;
+    idCell.textContent = student.studentId || "";
 
+    row.appendChild(idCell);
+
+    // Full Name
+    const nameCell = document.createElement("td");
+
+    nameCell.textContent = student.fullname || student.name || "";
+
+    row.appendChild(nameCell);
+
+    // Course
+    const courseCell = document.createElement("td");
+
+    courseCell.textContent = student.course || "";
+
+    row.appendChild(courseCell);
+
+    // Email
+    const emailCell = document.createElement("td");
+
+    emailCell.textContent = student.email || "";
+
+    row.appendChild(emailCell);
+
+    // Phone
+    const phoneCell = document.createElement("td");
+
+    phoneCell.textContent = student.phonenumber || student.phone || "";
+
+    row.appendChild(phoneCell);
+
+    // Gender
+    const genderCell = document.createElement("td");
+
+    genderCell.textContent = student.gender || "";
+
+    row.appendChild(genderCell);
+
+    // DOB
+    const dobCell = document.createElement("td");
+
+    if (student.dob) {
+      dobCell.textContent = new Date(student.dob).toLocaleDateString();
+    } else {
+      dobCell.textContent = "";
     }
 
+    row.appendChild(dobCell);
 
-    noStudents.style.display = "none";
+    // Status
+    const statusCell = document.createElement("td");
 
+    const statusBadge = document.createElement("span");
 
-    students.forEach((student) => {
+    const status = student.status || "Active";
 
-        const row = document.createElement("tr");
+    statusBadge.textContent = status;
 
+    statusBadge.classList.add("status-badge");
 
-        // Student ID
-        const idCell = document.createElement("td");
+    if (status === "Inactive") {
+      statusBadge.classList.add("status-inactive");
+    } else {
+      statusBadge.classList.add("status-active");
+    }
 
-        idCell.textContent = student.studentId || "";
+    statusCell.appendChild(statusBadge);
 
-        row.appendChild(idCell);
+    row.appendChild(statusCell);
 
+    // Address
+    const addressCell = document.createElement("td");
 
-        // Full Name
-        const nameCell = document.createElement("td");
+    addressCell.textContent = student.address || "";
 
-        nameCell.textContent =
-            student.fullname ||
-            student.name ||
-            "";
+    row.appendChild(addressCell);
 
-        row.appendChild(nameCell);
+    // Actions
+    const actionCell = document.createElement("td");
 
+    actionCell.classList.add("action-cell");
 
-        // Course
-        const courseCell = document.createElement("td");
+    // Edit
+    const editButton = document.createElement("button");
 
-        courseCell.textContent =
-            student.course || "";
+    editButton.textContent = "Edit";
 
-        row.appendChild(courseCell);
+    editButton.classList.add("edit-btn");
 
-
-        // Email
-        const emailCell = document.createElement("td");
-
-        emailCell.textContent =
-            student.email || "";
-
-        row.appendChild(emailCell);
-
-
-        // Phone
-        const phoneCell = document.createElement("td");
-
-        phoneCell.textContent =
-            student.phonenumber ||
-            student.phone ||
-            "";
-
-        row.appendChild(phoneCell);
-
-
-        // Gender
-        const genderCell = document.createElement("td");
-
-        genderCell.textContent =
-            student.gender || "";
-
-        row.appendChild(genderCell);
-
-
-        // DOB
-        const dobCell = document.createElement("td");
-
-        if (student.dob) {
-
-            dobCell.textContent =
-                new Date(student.dob)
-                    .toLocaleDateString();
-
-        } else {
-
-            dobCell.textContent = "";
-
-        }
-
-        row.appendChild(dobCell);
-
-
-        // Status
-        const statusCell = document.createElement("td");
-
-        const statusBadge = document.createElement("span");
-
-        const status =
-            student.status || "Active";
-
-        statusBadge.textContent = status;
-
-        statusBadge.classList.add("status-badge");
-
-
-        if (status === "Inactive") {
-
-            statusBadge.classList.add(
-                "status-inactive"
-            );
-
-        } else {
-
-            statusBadge.classList.add(
-                "status-active"
-            );
-
-        }
-
-
-        statusCell.appendChild(statusBadge);
-
-        row.appendChild(statusCell);
-
-
-        // Address
-        const addressCell = document.createElement("td");
-
-        addressCell.textContent =
-            student.address || "";
-
-        row.appendChild(addressCell);
-
-
-        // Actions
-        const actionCell =
-            document.createElement("td");
-
-        actionCell.classList.add("action-cell");
-
-
-        // Edit
-        const editButton =
-            document.createElement("button");
-
-        editButton.textContent = "Edit";
-
-        editButton.classList.add("edit-btn");
-
-
-        editButton.addEventListener("click", () => {
-
-            window.location.href =
-                `edit-student.html?id=${student._id}`;
-
-        });
-
-
-        // Delete
-        const deleteButton =
-            document.createElement("button");
-
-        deleteButton.textContent = "Delete";
-
-        deleteButton.classList.add("delete-btn");
-
-
-        deleteButton.addEventListener("click", () => {
-
-            deleteStudent(student._id);
-
-        });
-
-
-        actionCell.appendChild(editButton);
-
-        actionCell.appendChild(deleteButton);
-
-        row.appendChild(actionCell);
-
-
-        tableBody.appendChild(row);
-
+    editButton.addEventListener("click", () => {
+      window.location.href = `edit-student.html?id=${student._id}`;
     });
 
-}
+    // Delete
+    const deleteButton = document.createElement("button");
 
+    deleteButton.textContent = "Delete";
+
+    deleteButton.classList.add("delete-btn");
+
+    deleteButton.addEventListener("click", () => {
+      deleteStudent(student._id);
+    });
+
+    actionCell.appendChild(editButton);
+
+    actionCell.appendChild(deleteButton);
+
+    row.appendChild(actionCell);
+
+    tableBody.appendChild(row);
+  });
+}
 
 // ================= SEARCH + FILTER =================
 
 function applyFilters() {
+  const searchText = searchInput.value.trim().toLowerCase();
 
-    const searchText =
-        searchInput.value
-            .trim()
-            .toLowerCase();
+  const selectedStatus = statusFilter.value;
 
-    const selectedStatus =
-        statusFilter.value;
+  const selectedCourse = courseFilter.value;
 
-    const selectedCourse =
-        courseFilter.value;
+  const filteredStudents = allStudents.filter((student) => {
+    const studentId = String(student.studentId || "").toLowerCase();
 
+    const name = String(student.fullname || student.name || "").toLowerCase();
 
-    const filteredStudents =
-        allStudents.filter((student) => {
+    const email = String(student.email || "").toLowerCase();
 
-            const studentId =
-                String(student.studentId || "")
-                    .toLowerCase();
+    const matchesSearch =
+      studentId.includes(searchText) ||
+      name.includes(searchText) ||
+      email.includes(searchText);
 
-            const name =
-                String(
-                    student.fullname ||
-                    student.name ||
-                    ""
-                ).toLowerCase();
+    const studentStatus = student.status || "Active";
 
-            const email =
-                String(student.email || "")
-                    .toLowerCase();
+    const matchesStatus =
+      selectedStatus === "All" || studentStatus === selectedStatus;
 
+    const matchesCourse =
+      selectedCourse === "All" || student.course === selectedCourse;
 
-            const matchesSearch =
-                studentId.includes(searchText) ||
-                name.includes(searchText) ||
-                email.includes(searchText);
+    return matchesSearch && matchesStatus && matchesCourse;
+  });
 
-
-            const studentStatus =
-                student.status || "Active";
-
-
-            const matchesStatus =
-                selectedStatus === "All" ||
-                studentStatus === selectedStatus;
-
-
-            const matchesCourse =
-                selectedCourse === "All" ||
-                student.course === selectedCourse;
-
-
-            return (
-                matchesSearch &&
-                matchesStatus &&
-                matchesCourse
-            );
-
-        });
-
-
-    displayStudents(filteredStudents);
-
+  displayStudents(filteredStudents);
 }
-
 
 // ================= DELETE =================
 
 async function deleteStudent(id) {
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this student?",
+  );
 
-    const confirmDelete = confirm(
-        "Are you sure you want to delete this student?"
+  if (!confirmDelete) {
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `https://student-management-system-u571.onrender.com/api/students/${id}`,
+      {
+        method: "DELETE",
+      },
     );
 
-
-    if (!confirmDelete) {
-
-        return;
-
+    if (!response.ok) {
+      throw new Error("Failed to delete student");
     }
 
+    const message = await response.text();
 
-    try {
+    alert(message);
 
-        const response = await fetch(
+    await loadStudents();
+  } catch (error) {
+    console.log("Error:", error);
 
-            `https://student-management-system-u571.onrender.com/api/students/${id}`,
-
-            {
-                method: "DELETE"
-            }
-
-        );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Failed to delete student"
-            );
-
-        }
-
-
-        const message =
-            await response.text();
-
-
-        alert(message);
-
-
-        await loadStudents();
-
-
-    } catch (error) {
-
-        console.log("Error:", error);
-
-        alert("Student delete nahi hua.");
-
-    }
-
+    alert("Student delete nahi hua.");
+  }
 }
-
 
 // ================= CLEAR FILTERS =================
 
-clearFilters.addEventListener(
-    "click",
-    () => {
+clearFilters.addEventListener("click", () => {
+  searchInput.value = "";
 
-        searchInput.value = "";
+  statusFilter.value = "All";
 
-        statusFilter.value = "All";
+  courseFilter.value = "All";
 
-        courseFilter.value = "All";
-
-        displayStudents(allStudents);
-
-    }
-);
-
+  displayStudents(allStudents);
+});
 
 // ================= EVENTS =================
 
-searchInput.addEventListener(
-    "input",
-    applyFilters
-);
+searchInput.addEventListener("input", applyFilters);
 
+statusFilter.addEventListener("change", applyFilters);
 
-statusFilter.addEventListener(
-    "change",
-    applyFilters
-);
-
-
-courseFilter.addEventListener(
-    "change",
-    applyFilters
-);
-
+courseFilter.addEventListener("change", applyFilters);
 
 // Start
 loadStudents();
