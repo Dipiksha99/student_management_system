@@ -94,7 +94,7 @@ form.addEventListener("submit", async (event) => {
   };
 
   try {
-    const response = await fetch(`http://localhost:5000/api/students/${id}`, {
+    const response = await fetch(`https://student-management-system-u571.onrender.com/api/students/${id}`, {
       method: "PUT",
 
       headers: {

@@ -370,7 +370,7 @@ async function deleteStudent(id) {
 
         const response = await fetch(
 
-            `http://localhost:5000/api/students/${id}`,
+            `https://student-management-system-u571.onrender.com/api/students/${id}`,
 
             {
                 method: "DELETE"
