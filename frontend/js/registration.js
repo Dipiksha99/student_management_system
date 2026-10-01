@@ -89,7 +89,7 @@ form.addEventListener("submit", async (event) => {
         // ================= CHECK DUPLICATE STUDENT ID =================
 
         const checkResponse = await fetch(
-            "http://localhost:5000/api/students"
+            "http://:5000/api/students"
         );
 
 
@@ -141,7 +141,7 @@ form.addEventListener("submit", async (event) => {
         // ================= SAVE NEW STUDENT =================
 
         const response = await fetch(
-            "http://localhost:5000/api/students",
+            "https://student-management-system-u571.onrender.com/api/students",
             {
                 method: "POST",
 

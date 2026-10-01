@@ -22,7 +22,7 @@ if (!id) {
 }
 
 // Get existing student data
-fetch(`http://localhost:5000/api/students/${id}`)
+fetch(`https://student-management-system-u571.onrender.com  /api/students/${id}`)
   .then((response) => {
     if (!response.ok) {
       throw new Error("Student not found");

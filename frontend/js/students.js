@@ -23,7 +23,7 @@ async function loadStudents() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/students"
+            "https://student-management-system-u571.onrender.com/api/students"
         );
 
         if (!response.ok) {
