@@ -22,7 +22,7 @@ if (!id) {
 }
 
 // Get existing student data
-fetch(`https://student-management-system-u571.onrender.com  /api/students/${id}`)
+fetch(`https://student-management-system-u571.onrender.com/api/students/${id}`)
   .then((response) => {
     if (!response.ok) {
       throw new Error("Student not found");
@@ -94,15 +94,18 @@ form.addEventListener("submit", async (event) => {
   };
 
   try {
-    const response = await fetch(`https://student-management-system-u571.onrender.com/api/students/${id}`, {
-      method: "PUT",
+    const response = await fetch(
+      `https://student-management-system-u571.onrender.com/api/students/${id}`,
+      {
+        method: "PUT",
 
-      headers: {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(studentData),
       },
-
-      body: JSON.stringify(studentData),
-    });
+    );
 
     if (!response.ok) {
       throw new Error("Student update failed");
