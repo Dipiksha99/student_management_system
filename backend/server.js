@@ -29,10 +29,15 @@ app.use("/api/students", studentRoutes);
 //     res.send("Student data received successfully");
 // })
 
-app.get("/api/students",(req,res) =>{
-    res.send("students API is working");
-})
+app.use(cors());
 
-app.listen(5000, () => {
-    console.log("Server is running on port 5000");
+app.use(exp.json());
+
+app.use("/api/students", studentRoutes);
+
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server is running on port ${PORT}`);
 });
